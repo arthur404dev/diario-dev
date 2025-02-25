@@ -1,7 +1,6 @@
 'use server'
 
 import fs from "fs/promises"
-import { revalidatePath } from "next/cache"
 import path from "path"
 
 const DATA_FILE = path.join(process.cwd(), "data", "diary.json")
