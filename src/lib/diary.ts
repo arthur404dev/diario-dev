@@ -1,7 +1,6 @@
 'use server'
 
 import fs from "fs/promises"
-import { revalidatePath } from "next/cache"
 import path from "path"
 
 const DATA_FILE = path.join(process.cwd(), "data", "diary.json")
@@ -28,7 +27,7 @@ export async function getDiaryEntry(id: string): Promise<DiaryEntry | null> {
   return entries.find((entry) => entry.id === id) || null
 }
 
-export async function addDiaryEntry(formData: FormData) {
+export async function addDiaryEntry(prevState: string | null, formData: FormData) {
   const title = formData.get("title") as string
   const content = formData.get("content") as string
   const date = new Date().toISOString()
@@ -38,5 +37,5 @@ export async function addDiaryEntry(formData: FormData) {
   entries.push(newEntry)
   await fs.writeFile(DATA_FILE, JSON.stringify(entries, null, 2))
 
-  revalidatePath("/")
+  return "Entry added successfully"
 }
