@@ -15,14 +15,14 @@ export default async function Home() {
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {entries.map((entry) => (
-          <Card key={entry.id}>
+          <Card key={entry.id} className="hover:scale-105 transition-all hover:ring-2 hover:ring-neutral-50 group">
             <CardHeader>
               <CardTitle>{entry.title}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-500">{new Date(entry.date).toLocaleDateString()}</p>
-              <p className="my-2 line-clamp-3">{entry.content}</p>
-              <Link href={`/entry/${entry.id}`} className="mt-4 text-blue-500 hover:underline">
+              <p className="my-2 line-clamp-3 text-pretty text-gray-400 group-hover:text-gray-200">{entry.content}</p>
+              <Link href={`/entry/${entry.id}`} className="mt-4 text-sky-500 hover:underline">
                 Read More</Link>
             </CardContent>
           </Card>

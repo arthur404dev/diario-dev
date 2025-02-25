@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 md:p-8">
           <header className="mb-8">
             <h1 className="text-3xl font-bold text-center">My DevDiary</h1>
           </header>
